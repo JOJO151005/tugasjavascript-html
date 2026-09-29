@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1 - Menghitung Luas Bangun Datar</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .box { padding: 15px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h2>Hasil Perhitungan Luas Bangun Datar</h2>
+    <div id="hasil-perhitungan"></div>
+
+    <script>
+        // 1. Fungsi untuk menghitung luas persegi panjang
+        // Menggunakan rumus: panjang * lebar
+        function hitungLuasPersegiPanjang(panjang, lebar) {
+            let luas = panjang * lebar; // Menggunakan operator perkalian (*)
+            return `Luas Persegi Panjang (Panjang: ${panjang}, Lebar: ${lebar}) = <b>${luas}</b>`;
+        }
+
+        // 2. Fungsi untuk menghitung luas bujur sangkar
+        // Menggunakan rumus: sisi * sisi
+        function hitungLuasBujurSangkar(sisi) {
+            let luas = sisi * sisi;
+            return `Luas Bujur Sangkar (Sisi: ${sisi}) = <b>${luas}</b>`;
+        }
+
+        // 3. Fungsi untuk menghitung luas segitiga
+        // Menggunakan rumus: 0.5 * alas * tinggi
+        function hitungLuasSegitiga(alas, tinggi) {
+            let luas = 0.5 * alas * tinggi;
+            return `Luas Segitiga (Alas: ${alas}, Tinggi: ${tinggi}) = <b>${luas}</b>`;
+        }
+
+        // Deklarasi variabel untuk menampung pemanggilan fungsi dengan nilai argumen bebas
+        let outputPersegiPanjang = hitungLuasPersegiPanjang(10, 5);
+        let outputBujurSangkar = hitungLuasBujurSangkar(8);
+        let outputSegitiga = hitungLuasSegitiga(6, 12);
+
+        // Mengambil elemen HTML dengan id "hasil-perhitungan" untuk menampilkan output ke halaman
+        let wadahHasil = document.getElementById("hasil-perhitungan");
+        
+        // Menambahkan hasil ke dalam struktur HTML
+        wadahHasil.innerHTML += `<div class="box">${outputPersegiPanjang}</div>`;
+        wadahHasil.innerHTML += `<div class="box">${outputBujurSangkar}</div>`;
+        wadahHasil.innerHTML += `<div class="box">${outputSegitiga}</div>`;
+        
+        // Opsional: Menampilkan hasil ke console browser untuk keperluan debugging
+        console.log("=== Hasil Output Console ===");
+        console.log(outputPersegiPanjang.replace(/<[^>]*>?/gm, '')); // Hapus tag HTML saat print di console
+        console.log(outputBujurSangkar.replace(/<[^>]*>?/gm, ''));
+        console.log(outputSegitiga.replace(/<[^>]*>?/gm, ''));
+    </script>
+
+</body>
+</html>
