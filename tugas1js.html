@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tugas 1 - Javascript</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Mencetak judul program ke halaman web menggunakan tag HTML
+        document.write("<h2>Hasil Perhitungan Luas Bangun Datar</h2><hr/>");
+
+        // =======================================================
+        // 1. Fungsi untuk menghitung luas persegi panjang
+        // =======================================================
+        function hitungLuasPersegiPanjang(panjang, lebar) {
+            // deklarasi variabel dan proses perhitungan menggunakan operator perkalian (*)
+            let luas = panjang * lebar; 
+            
+            // cetak data ke layar dengan document.write dan penggabungan string (+)
+            document.write("Luas Persegi Panjang (Panjang: " + panjang + ", Lebar: " + lebar + ") = <b>" + luas + "</b><br/><br/>");
+        }
+
+        // =======================================================
+        // 2. Fungsi untuk menghitung luas bujur sangkar (persegi)
+        // =======================================================
+        function hitungLuasBujurSangkar(sisi) {
+            // deklarasi variabel dan proses perhitungan menggunakan operator perkalian (*)
+            let luas = sisi * sisi;
+            
+            // cetak data ke layar
+            document.write("Luas Bujur Sangkar (Sisi: " + sisi + ") = <b>" + luas + "</b><br/><br/>");
+        }
+
+        // =======================================================
+        // 3. Fungsi untuk menghitung luas segitiga
+        // =======================================================
+        function hitungLuasSegitiga(alas, tinggi) {
+            // deklarasi variabel dan proses perhitungan (0.5 atau 1/2 * alas * tinggi)
+            let luas = 0.5 * alas * tinggi;
+            
+            // cetak data ke layar
+            document.write("Luas Segitiga (Alas: " + alas + ", Tinggi: " + tinggi + ") = <b>" + luas + "</b><br/><br/>");
+        }
+
+        // =======================================================
+        // Inisialisasi variabel dengan nilai bebas (sebagai argumen)
+        // =======================================================
+        let nilaiPanjang = 10;
+        let nilaiLebar = 5;
+        
+        let nilaiSisi = 8;
+        
+        let nilaiAlas = 6;
+        let nilaiTinggi = 12;
+
+        // =======================================================
+        // Memanggil fungsi dan memasukkan nilai dari variabel
+        // =======================================================
+        hitungLuasPersegiPanjang(nilaiPanjang, nilaiLebar);
+        hitungLuasBujurSangkar(nilaiSisi);
+        hitungLuasSegitiga(nilaiAlas, nilaiTinggi);
+        
+        document.write("<hr/>");
+    </script>
+</body>
+</html>

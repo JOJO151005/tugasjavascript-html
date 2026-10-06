@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas 2 - Data Pegawai & Penggajian (Banyak Karyawan)</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+        // 1. Menyimpan data banyak karyawan di dalam Array of Objects
+        let dataPegawai = [
+            { nama: "Jonathan Hibran Ramadhan", umur: 21, jabatan: "Direktur", status: "Menikah" },
+            { nama: "Fadhel Yihua", umur: 33, jabatan: "Manajer", status: "belum menikah" },
+            { nama: "Ahmad Ghazy", umur: 19, jabatan: "Supervisor", status: "menikah" },
+            { nama: "Anwar Maulana", umur: 22, jabatan: "Staff", status: "belum menikah" },
+            { nama: "Rina Melati", umur: 41, jabatan: "Staff", status: "menikah" }
+        ];
+
+        // Cetak Judul dan Header Tabel menggunakan document.write()
+        document.write("<h2 align='center'>DATA PEGAWAI DAN RINCIAN GAJI</h2>");
+        document.write("<table border='1' width='90%' align='center' cellpadding='8' cellspacing='0'>");
+        
+        document.write("<thead>");
+        document.write("  <tr bgcolor='#f2f2f2'>");
+        document.write("    <th>No</th>");
+        document.write("    <th>Nama Pegawai</th>");
+        document.write("    <th>Umur</th>");
+        document.write("    <th>Jabatan</th>");
+        document.write("    <th>Status</th>");
+        document.write("    <th>Gaji Pokok</th>");
+        document.write("    <th>Tunjangan Jabatan (15%)</th>");
+        document.write("    <th>BPJS (10%)</th>");
+        document.write("    <th>Tunjangan Keluarga (20%)</th>");
+        document.write("    <th>Total Gaji</th>");
+        document.write("  </tr>");
+        document.write("</thead>");
+
+        document.write("<tbody>");
+
+        let grandTotalPerusahaan = 0; // Untuk menghitung total pengeluaran seluruh gaji
+        let nomor = 1;
+
+        // 2. Menggunakan Looping For...Of untuk memproses setiap karyawan di dalam array
+        for (let pegawai of dataPegawai) {
+            
+            let nama = pegawai.nama;
+            let umur = pegawai.umur;
+            let jabatan = pegawai.jabatan;
+            let status = pegawai.status;
+
+            // 3. Menentukan Gaji Pokok (Role baru) menggunakan Struktur Kendali IF - ELSE IF
+            let gaji = 0;
+            let jabatanLower = jabatan.toLowerCase(); // Mengubah teks menjadi huruf kecil semua agar mudah dicek
+
+            if (jabatanLower == "direktur")
+                gaji = 25000000;
+            else if (jabatanLower == "manajer")
+                gaji = 15000000;
+            else if (jabatanLower == "supervisor")
+                gaji = 10000000;
+            else if (jabatanLower == "staff")
+                gaji = 5000000;
+            else
+                gaji = 0;
+
+            // 4. Menghitung Tunjangan Jabatan (15% dari gapok)
+            let tunjJabatan = 0.15 * gaji;
+
+            // 5. Menghitung BPJS (10% dari gapok)
+            let bpjs = 0.10 * gaji;
+
+            // 6. Menghitung Tunjangan Keluarga menggunakan Ternary Operator
+            let tunjKeluarga = (status.toLowerCase() == "menikah") ? (0.20 * gaji) : 0;
+
+            // 7. Menghitung Total Gaji per Karyawan
+            let totalGajiKaryawan = gaji + tunjJabatan + bpjs + tunjKeluarga;
+            
+            // Menambahkan total gaji individu ke total pengeluaran perusahaan
+            grandTotalPerusahaan += totalGajiKaryawan;
+
+            // 8. Mencetak baris data ke dalam tbody
+            document.write("  <tr align='center'>");
+            document.write("    <td>" + nomor + "</td>");
+            document.write("    <td>" + nama + "</td>");
+            document.write("    <td>" + umur + " tahun</td>");
+            document.write("    <td>" + jabatan + "</td>");
+            document.write("    <td>" + status + "</td>");
+            document.write("    <td>Rp. " + gaji + "</td>");
+            document.write("    <td>Rp. " + tunjJabatan + "</td>");
+            document.write("    <td>Rp. " + bpjs + "</td>");
+            document.write("    <td>Rp. " + tunjKeluarga + "</td>");
+            document.write("    <td><b>Rp. " + totalGajiKaryawan + "</b></td>");
+            document.write("  </tr>");
+
+            nomor++; // Menambah urutan nomor
+        }
+
+        document.write("</tbody>");
+
+        // 9. Total Keseluruhan (tfoot)
+        document.write("<tfoot>");
+        document.write("  <tr bgcolor='#e6f7ff'>");
+        document.write("    <th colspan='9' align='right'>Grand Total Pengeluaran Gaji :</th>");
+        document.write("    <th>Rp. " + grandTotalPerusahaan + "</th>");
+        document.write("  </tr>");
+        document.write("</tfoot>");
+
+        document.write("</table>");
+    </script>
+
+</body>
+</html>
